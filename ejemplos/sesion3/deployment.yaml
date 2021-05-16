@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node
+  name: apache
   labels:
     app: deployment-node
 spec:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nodejs
-        image: devildeveloper/nodeapp:17
+        image: httpd
         env:
         - name: PORT
           value: "80"
@@ -29,5 +29,4 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
-      imagePullSecrets:
-        - name: regcred
+

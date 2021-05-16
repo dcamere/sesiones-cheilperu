@@ -9,7 +9,7 @@ jobs:
   building:
     runs-on: ubuntu-latest
     env:
-      IMAGE: devildeveloper/nodeapp
+      IMAGE: dcamere/nodeapp
     steps:
       - uses: actions/checkout@v2
       - name: build container
@@ -21,19 +21,7 @@ jobs:
           docker tag nodeapp $IMAGE:${{ github.run_number }}
       - name: login
         #run: echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-        run: echo ${{ secrets.DH_PWD }} | docker login --username devildeveloper --password-stdin
+        run: echo ${{ secrets.DH_PWD }} | docker login --username dcamere --password-stdin
       - name: push
         run: |
           docker push $IMAGE:${{ github.run_number }}
-  updatePod:
-    runs-on: ubuntu-latest
-    steps:
-      - name: install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          version: ""
-      - name: get k8s config
-        run: doctl kubernetes cluster kubeconfig save ${{ secrets.K8S_CLUSTER_NAME }}
-      - name: get nodes
-        run: kubectl set image deployment/node nodejs=devildeveloper/nodeapp:${{ github.run_number }} -n cheil-sesion3 --record 
