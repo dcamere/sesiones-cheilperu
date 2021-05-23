@@ -8,21 +8,18 @@ exports.handler = async (event) => {
         const r = await Axios.get('https://jsonplaceholder.typicode.com/todos/1');
         
         // TODO implement
-        response = {
-            statusCode: 200,
-            body: JSON.stringify('Hello from lambda!')
-        }
+        statusCode = 200,
+        body = JSON.stringify('Hello from lambda!')
+        
         LOG(tid, "INFO", "try", response)
     } catch (e) {
-        response = {
-            statusCode: 500,
-            body: JSON.stringify({message: e})
-        }
+        statusCode = 500,
+        body = JSON.stringify({message: e})
         LOG(tid, "INFO", "catch", response)
     } finally {
         return {
-            statusCode,
-            body,
+            statusCode: statusCode,
+            body: body,
             headers: {
                 "Acces-Control-Allow-Headers" : "Content-Type",
                 "Acces-Control-Allow-Origin": "*", // dominio de donde viene la solicitud
