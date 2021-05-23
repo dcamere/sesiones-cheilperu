@@ -21,7 +21,16 @@ exports.handler = async (event) => {
         }
         LOG(tid, "INFO", "catch", response)
     } finally {
-        return response;
+        return {
+            statusCode,
+            body,
+            headers: {
+                "Acces-Control-Allow-Headers" : "Content-Type",
+                "Acces-Control-Allow-Origin": "*",
+                "Acces-Control-Allow-Methods": "OPTIONS,POST,GET",
+                "Content-Type": "application/json"
+            }
+        };
     }
 };
 
