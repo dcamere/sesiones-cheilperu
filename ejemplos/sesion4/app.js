@@ -26,7 +26,7 @@ exports.handler = async (event) => {
             body,
             headers: {
                 "Acces-Control-Allow-Headers" : "Content-Type",
-                "Acces-Control-Allow-Origin": "*",
+                "Acces-Control-Allow-Origin": "*", // dominio de donde viene la solicitud
                 "Acces-Control-Allow-Methods": "OPTIONS,POST,GET",
                 "Content-Type": "application/json"
             }
