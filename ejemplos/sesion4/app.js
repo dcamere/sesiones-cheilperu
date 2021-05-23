@@ -1,12 +1,11 @@
 const Axios = require('axios');
 const Uuid = require('node-uuid');
 exports.handler = async (event) => {
-    let response;
+    let response, body, statusCode;
 
     try {
         const tid = Uuid();
         const r = await Axios.get('https://jsonplaceholder.typicode.com/todos/1');
-        
         
         // TODO implement
         response = {
