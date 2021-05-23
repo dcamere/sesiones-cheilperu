@@ -1,7 +1,7 @@
 const Axios = require('axios');
 exports.handler = async (event) => {
     const r = await Axios.get('https://jsonplaceholder.typicode.com/todos/1');
-    console.log(r);
+    console.log(r.data);
     // TODO implement
     const response = {
         statusCode: 200,
