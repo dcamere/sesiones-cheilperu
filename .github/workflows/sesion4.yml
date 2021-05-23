@@ -23,4 +23,4 @@ jobs:
       - name: Deploy lambda
         working-directory: ./ejemplos/sesion4
         run: |
-          aws lambda update-funcion-code --function-name ${{ secrets.AWS_LAMBDA_FN_NAME }} --zip-file fileb://build.zip
+          aws lambda update-function-code --function-name ${{ secrets.AWS_LAMBDA_FN_NAME }} --zip-file fileb://build.zip
